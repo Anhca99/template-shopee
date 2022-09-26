@@ -1,0 +1,39 @@
+:root {
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #ccc;
+}
+
+* {
+    /* đẻ kế thừa box-sizing: border-box; dùng khi responsive */
+    box-sizing: inherit;
+}
+
+html {
+    /* font-size: 100%; tuonwg ứng với 16px
+    mà 1rem thì = 16px 
+    62.5% tương ứng 12 px = với 1.2 rem*/
+    font-size: 62.5%;
+    line-height: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    
+}
+
+.gird {
+    width: 1200px;
+    max-width: 100%;
+    /* tự động căn giữa khối này trong một khối khác */
+    margin: 0 auto;
+}
+
+/* trường hợp không sử dụng width: 1200px; */
+.gird__full-width {
+    width: 100%;
+}
+
+.gird__row {
+    display: flex;
+    /* những thằng con trên hàng ngang đầy quá sẽ xuống hàng */
+    flex-wrap: wrap;
+}
+
