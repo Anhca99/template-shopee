@@ -1,7 +1,13 @@
 :root {
+    --primary-color: #EE4D2D;
     --white-color: #fff;
     --black-color: #000;
-    --text-color: #ccc;
+    --text-color: #333;
+    --boder-color: #dbdbdb;
+    --navbar-height: 34px;
+    --header-height: 120px;
+    --header-width-search-height: calc(var(--header-height) - var(--navbar-height));
+    --star-gold-color: #FFCE3E;
 }
 
 * {
@@ -10,30 +16,240 @@
 }
 
 html {
-    /* font-size: 100%; tuonwg ứng với 16px
-    mà 1rem thì = 16px 
-    62.5% tương ứng 12 px = với 1.2 rem*/
+    /* mặc định 10px đổi sang rem sẽ là 10/16 = 0.625, 
+    như vậy để CSS bằng đơn vị rem ra được kích cỡ tương ứng 10px 
+    ta sẽ CSS là font-size: 0.625rem.
+    quy đổi tỉ lệ tại thẻ html với CSS font-size: 62.5%. 
+    Kết quả thu được, 1rem = 10px, 1.6rem = 16px, 2rem = 20px, 2.4rem = 24px.*/
     font-size: 62.5%;
     line-height: 1.6rem;
     font-family: 'Roboto', sans-serif;
-    
+    box-sizing: border-box;
 }
 
-.gird {
-    width: 1200px;
+/* 3 gird chuẩn bị trước cho responsive */
+/* công dụng dùng để taoh lề trái phải cho màn hình
+khi ta sử dụng nó, vì chiều dài màn hình 1280px lận,
+ví dụ: sử dụng cho header, tạo class gird bỏ bỏ header vào
+hai lề trái phải mỗi bên cách 40px */
+.grid {
+    width: 1240px;
     max-width: 100%;
     /* tự động căn giữa khối này trong một khối khác */
     margin: 0 auto;
 }
 
 /* trường hợp không sử dụng width: 1200px; */
-.gird__full-width {
+.grid__full-width {
     width: 100%;
 }
 
-.gird__row {
+.grid__row {
     display: flex;
     /* những thằng con trên hàng ngang đầy quá sẽ xuống hàng */
     flex-wrap: wrap;
+    margin-left: -5px;
+    margin-right: -5px;
+    /* flex-flow: row; */
 }
 
+.grid__column-2 {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 16.6667%;
+}
+
+.grid__column-2-4 {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 20%;
+}
+
+.grid__column-10 {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 83.3334%;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    animation: fadeIn linear 0.2s;
+}
+
+@keyframes growth {
+    from {
+        transform: scale(--growth-from);
+    }
+    to {
+        transform: scale(--growth-to);
+    }
+}
+
+.modal__overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.modal__body {
+    --growth-from: 0.7;
+    --growth-to: 1;
+    margin: auto;
+    position: relative;
+    /* mặc định body nằm trên overlay */
+    z-index: 1;
+    animation: growth linear 0.1s;
+}
+
+/* Button style */
+.btn {
+    min-width: 124px;
+    height: 34px;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.5rem;
+    padding: 0 12px;
+    cursor: pointer;
+    color: var(--text-color);
+    line-height: 1.6rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center ;
+}
+
+.btn.btn--normal:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* tìm những thằng có class chưa 2 này nó mới có tác dụng  */
+.btn.btn--primary {
+    color: var(--white-color);
+    background-color: var(--primary-color);
+}
+
+/* khi nào muốn vô hiệu hóa btn */
+.btn.btn--disable {
+    color: #949494;
+    cursor: default;
+    background-color: #c3c3c3;
+}
+
+/* Select giá */
+.select-input {
+    position: relative;
+    min-width: 120px;
+    height: 34px;
+    padding: 0 12px;
+    border-radius: 2px;
+    background-color: var(--white-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.select-input__label {
+    font-size: 1.4rem;
+    min-width: 70px;
+}
+
+.select-input__icon {
+    font-size: 1.2rem;
+    color: #4A4A4A;
+    top: 1px;
+    margin-left: 60px;;
+}
+
+.select-input__list {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 25px;
+    border-radius: 3px;
+    background-color: var(--white-color);
+    padding: 12px 14px 14px 12px;
+    list-style: none;
+    display: none;
+    z-index: 1;
+}
+
+.select-input__list::before {
+    content: "";
+    display: block;
+    position: relative;
+    top: -18px;
+    left: -11px;
+    height: 10px;
+    width: 118%;
+}
+
+.select-input:hover .select-input__list {
+    display: block;
+}
+
+.select-input__link {
+    font-size: 1.4rem;
+    color: var(--text-color);
+    text-decoration: none;
+    display: block;
+    padding: 4px 0; 
+}
+
+.select-input__link:hover {
+    color: var(--primary-color);
+}
+
+/* Phân trang */
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+}
+
+.home-product__pagination {
+    margin: 50px 0 32px 0;
+}
+
+.pagination-item {
+    margin: 0 12px;
+}
+
+.pagination-item--active .pagination-item__link {
+    color: var(--white-color);
+    background-color: var(--primary-color);
+}
+
+.pagination-item--active .pagination-item__link:hover {
+    background-color: #f5745a;
+}
+
+.pagination-item__link {
+    display: block;
+    /* Đặt chiều cao trước khi thay đổi thì height và line-height sẽ ăn theo */
+    --height: 30px;
+    text-decoration: none;
+    font-size: 2rem;
+    color: #939393;
+    min-width: 40px;
+    height: var(--height);
+    line-height: var(--height);
+    text-align: center;
+}
