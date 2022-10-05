@@ -1,1 +1,1 @@
-# template-shopee
+# template-shopee (finish but not responsive)
