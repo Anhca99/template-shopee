@@ -8,6 +8,7 @@
     --header-height: 120px;
     --header-width-search-height: calc(var(--header-height) - var(--navbar-height));
     --star-gold-color: #FFCE3E;
+    --header-sort-bar-height: 46px;
 }
 
 * {
@@ -32,18 +33,6 @@ html {
 khi ta sử dụng nó, vì chiều dài màn hình 1280px lận,
 ví dụ: sử dụng cho header, tạo class gird bỏ bỏ header vào
 hai lề trái phải mỗi bên cách 40px */
-.grid {
-    width: 1240px;
-    max-width: 100%;
-    /* tự động căn giữa khối này trong một khối khác */
-    margin: 0 auto;
-}
-
-/* trường hợp không sử dụng width: 1200px; */
-.grid__full-width {
-    width: 100%;
-}
-
 .grid__row {
     display: flex;
     /* những thằng con trên hàng ngang đầy quá sẽ xuống hàng */
@@ -226,6 +215,7 @@ hai lề trái phải mỗi bên cách 40px */
 
 .home-product__pagination {
     margin: 50px 0 32px 0;
+    padding-left: 0;
 }
 
 .pagination-item {

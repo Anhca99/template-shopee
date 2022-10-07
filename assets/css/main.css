@@ -504,7 +504,29 @@ màu nhẹ hơn */
     color: var(--primary-color);
 }
 
-/* Header with search */
+/* Header with search cha */
+/* search mobile */
+.header__mobile-search {
+    padding: 0 12px;
+    display: none;
+}
+
+.header__mobile-search-icon {
+    font-size: 2.2rem;
+    color: var(--white-color);
+}
+
+/* input checkbox */
+.header__search-checkbox {
+    position: absolute;
+    width: 42px;
+    left: 12px;
+    height: 34px;
+}
+
+
+
+/* Header with search con */
 .header__with-search {
     height: var(--header-width-search-height);
     display: flex;
@@ -514,10 +536,13 @@ màu nhẹ hơn */
 
 .header__logo {
     width: 200px;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .header__logo-link {
     text-decoration: none;
+    display: block;
+    line-height: 0;
 }
 
 .header__logo-img {
@@ -546,6 +571,7 @@ màu nhẹ hơn */
     display: inline-block;
     padding: 0 12px;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .header__cart-icon {
@@ -632,7 +658,7 @@ màu nhẹ hơn */
     list-style: none;
     /* Giới hạn chiều cao để trường hượp giỏ hàng đầy quá 
     đơn vị vh vì khi màn hình nhỏ cũng xuất hiện giỏ hàng*/
-    height: 56vh;
+    max-height: 56vh;
     /* cho nó thanh cuộn chiều dọc */
     overflow-y: auto;
 }
@@ -797,10 +823,11 @@ màu nhẹ hơn */
 
 .header__search-option {
     position: absolute;
-    right: 0;
+    left: 0;
+    right: 0px;
     top: calc(100% - 2px);
     list-style: none;
-    width: 130px;
+    min-width: 162px;
     box-shadow: 0 1px 2px #c0c0c0;
     padding: 0;
     border-radius: 3px;
@@ -824,7 +851,6 @@ màu nhẹ hơn */
 
 .header__search-option-item {
     background-color: var(--white-color);
-    border-radius: 3px;
     padding: 8px 8px;
     text-align: left;
 }
@@ -912,6 +938,60 @@ màu nhẹ hơn */
     line-height: 38px;
     color: var(--text-color);
     display: block;
+}
+
+/* sort bar tablet */
+.header__sort-bar {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    height: var(--header-sort-bar-height);
+    background-color: var(--white-color);
+    /* do ta displat: none rồi thì xóa display flex đi
+    rồi để hiện dispaly: flex bên tablet */
+    display: flex;
+    list-style: none;
+    /* do thẻ ul nó mặc định khoảng cách sẵn */
+    margin: 0;
+    padding-left: 0;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    text-align: center;
+    display: none;
+}
+
+.header__sort-item {
+    /* 4 ông item đều căn giữa */
+    flex: 1;
+}
+
+.header__sort-link {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1.4rem;
+    display: block;
+    height: 100%;
+    line-height: var(--header-sort-bar-height);
+}
+
+/* css vạch ngăn */
+.header__sort-link::before {
+    content: "";
+    position: relative;
+    top: 0;
+    left: 65%;
+    height: 60%;
+    border-left: 1px solid #e5e5e5;
+}
+
+/* ẩn vạch ngăn đầu tiên */
+.header__sort-item:last-child .header__sort-link::before  {
+    display: none;
+}
+
+.header__sort-item-active .header__sort-link {
+    color: var(--primary-color);
 }
 
 /* app__container */
@@ -1075,6 +1155,60 @@ màu nhẹ hơn */
     font-size: 1rem;
     color: #555;
 }
+
+/* Mobile - danh sách sản phẩm */
+.mobile-category{
+    display: none;
+}
+
+.mobile-category__list{
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+.mobile-category__list::-webkit-scrollbar {
+    display: none;
+}
+
+.mobile-category__item{
+    flex-shrink: 0;
+    margin-right: 10px;
+}
+
+/* 3n có nghĩa bắt đầu từ thằng thứ 3 cứ thằng số 3 là bị ảnh hưởng*/
+.mobile-category__item:nth-of-type(3n + 1) .mobile-category__link {
+    background-color: #87AFD8;
+}
+
+.mobile-category__item:nth-of-type(3n + 2) .mobile-category__link {
+    background-color: #76C9BD;
+}
+
+.mobile-category__item:nth-of-type(3n + 3) .mobile-category__link {
+    background-color: #88CF81;
+}
+
+.mobile-category__link{
+    --line-height: 2rem;
+    text-decoration: none;
+    color: var(--white-color);
+    font-size: 1.4rem;
+    line-height: var(--line-height);
+    height: calc(var(--line-height) * 2);
+    text-align: center;
+    width: 110px;
+    display: block;
+    border-radius: 4px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    user-select: none;
+    padding: 0 6px;
+}
+
 
 /* Danh sách sản phẩm */
 .home-product-item {
